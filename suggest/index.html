@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>xx  - xx</title>
+    <title>Generates title with no repeats</title>
     <meta name="description" content="xx">
     <meta name="author" content="xx">
     
@@ -35,44 +35,7 @@
 </header>
 
     <div id="myDiv"></div>
-    
-<!-- randomly generates a new div each time -->
-    
-    <button onclick="generateRandom()">Generate Random new Cell</button>
-	<div id="container"></div>
 
-	<script>
-		function generateRandom() {
-			// Parse the Google Sheet using Papa Parse
-			Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vRf65N0A-e-jUdxhZMurgOiKGwsijBtBYqLnDxgKBtZCrzEapZGAJsgbI-f0A0I_NEZRhN3v4uvq1-t/pub?output=csv', {
-				download: true,
-				header: true,
-				complete: function(results) {
-					// Extract the cells in column 1
-					var cells = results.data.map(function(row) {
-						return row['title'];
-					});
-
-					// Display a random cell in a new div
-					if (cells.length > 0) {
-						var randomIndex = Math.floor(Math.random() * cells.length);
-						var randomCell = cells[randomIndex];
-						var newDiv = document.createElement('div');
-						newDiv.textContent = randomCell;
-						document.getElementById('container').appendChild(newDiv);
-					} else {
-						document.getElementById('container').textContent = 'No data found';
-					}
-				},
-				error: function(error) {
-					document.getElementById('container').textContent = 'Error: ' + error.message;
-				}
-			});
-		}
-	</script>
-    
-    
-    
     <!-- no repeat -->
     
 
