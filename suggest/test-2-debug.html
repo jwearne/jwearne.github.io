@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Random Cells separate but still repeats</title>
+	<title>Random Cell</title>
 </head>
 <body>
 	<button onclick="generateRandom()">Generate Random Cell</button>
@@ -9,42 +9,45 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 	<script>
-		var rows = []; // Keep track of rows to prevent repeats
+		var rows = [];
 
 		function generateRandom() {
-			// Parse the Google Sheet using Papa Parse
 			Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vRf65N0A-e-jUdxhZMurgOiKGwsijBtBYqLnDxgKBtZCrzEapZGAJsgbI-f0A0I_NEZRhN3v4uvq1-t/pub?output=csv', {
 				download: true,
 				header: true,
 				complete: function(results) {
-					// Extract the cells in column 1
-					var allRows = results.data.map(function(row) {
-						return !rows.includes(row);
-					});
+                    // Extract the cells in column 1
+					console.log('All rows:', results.data);
                     
-					// Filter out rows that have already been displayed
+                    // Filter out rows that have already been displayed
 					var unusedRows = results.data.filter(function(row) {
-						return !rows.includes(row);
+						var unused = !rows.includes(row);
+						console.log('Row', row, unused ? 'is' : 'is not', 'unused');
+						return unused;
 					});
 
+					console.log('Unused rows:', unusedRows);
+
 					if (unusedRows.length === 0) {
-						// Reset rows array if all rows have been displayed
+                        // Reset rows array if all rows have been displayed
 						rows = results.data.slice();
 					}
 
-					// Display a random unused row in a new div
+                    // Display a random unused row in a new div
 					if (unusedRows.length > 0) {
 						var randomIndex = Math.floor(Math.random() * unusedRows.length);
 						var randomRow = unusedRows[randomIndex];
 						rows.push(randomRow); // Add displayed row to rows array
 
-						// Display cells in separate divs
+						console.log('Selected row:', randomRow);
+
+                        // Display cells in separate divs
 						var myDiv1 = document.createElement('div');
-						  myDiv1.classList.add('cell');
-						  myDiv1.textContent = randomRow['title'];
+						myDiv1.classList.add('cell');
+						myDiv1.textContent = randomRow['title'];
 						var myDiv2 = document.createElement('div');
-						  myDiv2.classList.add('cell');
-						  myDiv2.textContent = randomRow['description'];
+						myDiv2.classList.add('cell');
+						myDiv2.textContent = randomRow['description'];
 
 						var myDiv = document.getElementById('myDiv');
 						myDiv.appendChild(myDiv1);
