@@ -151,6 +151,19 @@ transition: all .4s ease;
 
     .button:hover {background-color: rgba(0,0,0,.5);}
 
+/* table */
+
+table tr {
+float: left;
+width: 100%;
+}
+
+#myDiv {
+float: left;
+width: 100%;
+padding: 1rem;
+}
+
 /* figure */
 
 .figure-container {
