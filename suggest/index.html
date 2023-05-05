@@ -31,79 +31,8 @@
     <h3>Heading 3</h3>
 </header>
     
-<!-- CSS -->
-<style type="text/css">
-    table th, table td{
-    padding: 5px;
-}
-</style>
-
-<div>
-
-    <div>
-         <input type="file" name="file" id="file" accept=".csv" > <br><br>
-         <input type="button" id="btnsubmit" value="Submit" onclick="readCSVFile();" >
-    </div>
-
-    <br><br>
-    <!-- List CSV file data -->
-    <table id="tblcsvdata" border="1" style="border-collapse: collapse;">
-         <thead>
-              <tr>
-                  <th>S.no</th>
-                  <th>Username</th>
-                  <th>Name</th>
-                  <th>Email</th>
-              </tr>
-         </thead>
-         <tbody>
-
-         </tbody>
-
-    </table>
-</div>
-    
 <footer></footer>
 </div>
-    
-<script>
-    function init() {
-              Papa.parse('https://docs.google.com/spreadsheets/d/1UXWBXJ4nLqO1USXghrXMvpLclG8tTDir0oDgibi29t8/pub?output=csv', {
-              download: true,
-              header: true,
-              complete: function(results) {
-                var data = results.data
-                console.log(data)
-              }
-            })
-    window.addEventListener('DOMContentLoaded', init)
-</script>
-    
-<script>
-  window.onload = function() {
-    init()
-  };
 
-  var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1UXWBXJ4nLqO1USXghrXMvpLclG8tTDir0oDgibi29t8/pubhtml';
-
-  function init() {
-    Tabletop.init({
-      key: public_spreadsheet_url,
-      callback: showInfo,
-      simpleSheet: true
-    })
-  }
-
-  function showInfo(data, tabletop) {
-    var tr;
-    for (var i = 0; i < data.length; i++) {
-      tr = $('<tr/>');
-      tr.append("<td>" + data[i].title + "</td>");
-      tr.append("<td>" + data[i].description + "</td>");
-      $('table').append(tr);
-    }
-    console.log(data);
-  }    
-</script>
 </body>
 </html>
