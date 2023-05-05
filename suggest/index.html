@@ -56,21 +56,20 @@
         document.write("Successfully processed " + data.length + " rows!")
         document.getElementById("data").innerHTML = "<strong>Title:</strong> " + [ data[0].Name, data[1].Name, data[2].Name ].join(", ");
         console.log(data);
+
+        var html = '';
+          
+        for (var i = 0; i < data.length; i++) {
+          html += '<tr>';
+          html += '<td>' + data[i].title + '</td>';
+          html += '<td>' + data[i].description + '</td>';
+          html += '</tr>';
+        }
+        document.getElementById('data').innerHTML = '<table>' + html + '</table>';
+
       }
 
       document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");        
-    </script>
-    <script type="text/javascript">
-var data = results.data;
-var html = '';
-for (var i = 0; i < data.length; i++) {
-  html += '<tr>';
-  html += '<td>' + data[i].title + '</td>';
-  html += '<td>' + data[i].description + '</td>';
-  html += '</tr>';
-}
-document.getElementById('data').innerHTML = '<table>' + html + '</table>';
-
     </script>
     
 <footer></footer>
