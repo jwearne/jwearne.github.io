@@ -27,16 +27,23 @@
 
 </head>
 <body>
+<div id="app-wrapper">
 <header>
-    <h1>Home</h1>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
 </header>
-<div class="flex flex-center" id="shadow">
-    <button onclick="generateRandom()">Suggest something</button>
-</div>
-<section class="card">
-	<div id="myDiv"></div>
+
+    <div id="myDiv"></div>
+
+    <!-- no repeat -->
+    
+
+	<button onclick="generateRandom()">Generate Random Cell - no repeat</button>
+	<div id="myDivNoRepeat"></div>
+
 	<script>
-		var rows = []; // Keep track of rows to prevent repeats
+		var cells = []; // Keep track of cells to prevent repeats
 
 		function generateRandom() {
 			// Parse the Google Sheet using Papa Parse
@@ -45,48 +52,40 @@
 				header: true,
 				complete: function(results) {
 					// Extract the cells in column 1
-					var allRows = results.data.map(function(row) {
-						return !rows.includes(row);
-					});
-                    
-					// Filter out rows that have already been displayed
-					var unusedRows = results.data.filter(function(row) {
-						return !rows.includes(row);
+					var allCells = results.data.map(function(row) {
+						return row['title'];
 					});
 
-					if (unusedRows.length === 0) {
-						// Reset rows array if all rows have been displayed
-						rows = results.data.slice();
+					// Filter out cells that have already been displayed
+					var unusedCells = allCells.filter(function(cell) {
+						return !cells.includes(cell);
+					});
+
+					if (unusedCells.length === 0) {
+						// Reset cells array if all cells have been displayed
+						cells = allCells.slice();
 					}
 
-					// Display a random unused row in a new div
-					if (unusedRows.length > 0) {
-						var randomIndex = Math.floor(Math.random() * unusedRows.length);
-						var randomRow = unusedRows[randomIndex];
-						rows.push(randomRow); // Add displayed row to rows array
-
-						// Display cells in separate divs
-						var myDiv1 = document.createElement('div');
-						  myDiv1.classList.add('cell');
-						  myDiv1.textContent = randomRow['title'];
-						var myDiv2 = document.createElement('div');
-						  myDiv2.classList.add('cell');
-						  myDiv2.textContent = randomRow['description'];
-
-						var myDiv = document.getElementById('myDiv');
-						myDiv.appendChild(myDiv1);
-						myDiv.appendChild(myDiv2);
+					// Display a random unused cell in a div
+					if (unusedCells.length > 0) {
+						var randomIndex = Math.floor(Math.random() * unusedCells.length);
+						var randomCell = unusedCells[randomIndex];
+						cells.push(randomCell); // Add displayed cell to cells array
+						document.getElementById('myDivNoRepeat').textContent = randomCell;
 					} else {
-						document.getElementById('myDiv').textContent = 'All rows have been displayed';
+						document.getElementById('myDivNoRepeat').textContent = 'All cells have been displayed';
 					}
 				},
 				error: function(error) {
-					document.getElementById('myDiv').textContent = 'Error: ' + error.message;
+					document.getElementById('myDivNoRepeat').textContent = 'Error: ' + error.message;
 				}
 			});
 		}
 	</script>
-</section>
+
+
 <footer></footer>
+</div>
+
 </body>
 </html>
