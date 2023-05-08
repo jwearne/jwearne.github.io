@@ -34,6 +34,14 @@
 </header>
 <div id="shadow">
     <button onclick="generateRandom()">Suggest something</button>
+    <script>
+        (function () {
+            $('button').on('click', function() {
+                $('button').toggleClass('animate');
+                $('nav').toggleClass('active');
+            })
+        })();
+    </script>
 </div>
 <main>
     <section class="card">
@@ -71,15 +79,11 @@
                                 rows.push(randomRow); // Add displayed row to rows array
 
                                 // Display cells in separate divs
-                                var myDiv1 = document.createElement('li');
-                                  myDiv1.classList.add('cell');
-                                  myDiv1.textContent = randomRow['description'];
                                 var myDiv2 = document.createElement('li');
                                   myDiv2.classList.add('cell');
                                   myDiv2.textContent = randomRow['title'];
 
                                 var myDiv = document.getElementById('suggestions');
-                                myDiv.appendChild(myDiv1);
                                 myDiv.appendChild(myDiv2);
                             } else {                                document.getElementById('suggestions').textContent = 'All rows have been displayed';
                             }

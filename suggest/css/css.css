@@ -30,7 +30,8 @@ color: #34C759;
 }
 
     p {
-    margin: 0 0 1rem 0;
+    font-size: 1.35rem;
+    line-height: 1rem;
     }
 
     a {
@@ -71,11 +72,15 @@ padding: .5rem 1rem 0 1rem;
 /* global */
 
 main {
+display: flex;
+position: absolute;
+height: calc(100vh - 3rem);
+width: 100%;
 padding: 4rem 0 0 0;
 }
 
 section {
-padding: 1rem 1rem 20vh 1rem;
+padding: 2rem 1rem 20vh 1rem;
 }
 
     section div {
@@ -89,6 +94,7 @@ flex-wrap: wrap;
 }
 
 .card {
+flex-grow: 1;
 background: #fff;
 border-radius: 1rem 1rem 0 0;
 box-shadow: 0px 0px 12px rgba(0, 0, 0, .05);
@@ -126,8 +132,8 @@ align-items: flex-end;
 height: 25vh;
 width: 100%;
 bottom: 0;
-background: linear-gradient(0deg, rgba(242,246,243,1) 0%, rgba(242,246,243,1) 60%, rgba(242,246,243,0) 100%);
--webkit-background: linear-gradient(0deg, rgba(242,246,243,1) 0%, rgba(242,246,243,1) 60%, rgba(242,246,243,0) 100%);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+-webkit-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
 z-index: 1;
 }
 
@@ -141,7 +147,7 @@ color: #fff;
 border: none;
 border-radius: 50px;
 box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-transition: all .4s ease;
+transition: background 0s ease;
 }
 
     button:active {
