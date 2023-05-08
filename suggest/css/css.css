@@ -6,11 +6,6 @@ flex-direction: column;
 
 font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 background: rgb(242,246,243);
-
-transition: all .4s ease-in-out;
--webkit-transition: all .4s ease;
--moz-transition: all .4s ease;
--ms-transition: all .4s ease;
 }
 
     ::selection {background: rgba(0,0,0,.5);}
@@ -74,7 +69,7 @@ padding: .5rem 1rem 0 1rem;
 main {
 display: flex;
 position: absolute;
-height: calc(100vh - 3rem);
+min-height: calc(100vh - 3rem);
 width: 100%;
 padding: 4rem 0 0 0;
 }
@@ -122,6 +117,8 @@ transform: translateY(10%);
     border-radius: .5rem;
     }
 
+.animation {background: red;}
+
 /* Unique */
 
 #shadow {
@@ -147,12 +144,18 @@ color: #fff;
 border: none;
 border-radius: 50px;
 box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-transition: background 0s ease;
+
+transition: all .2s ease-in-out;
+-webkit-transition: all .2s ease;
+-moz-transition: all .2s ease;
+-ms-transition: all .2s ease;
 }
 
     button:active {
-    background-color: rgba(0,0,0,.5);
-    -webkit-transform: translateY(-5px)
+    background-color: rgb(48,209,88);
+    box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.3);
+    -webkit-transform: translateY(-5px);
+    -webkit-transform: scale(1.05);
     }
 
 /* footer */

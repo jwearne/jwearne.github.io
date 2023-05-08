@@ -29,19 +29,11 @@
 <body>
 <header>
     <div>
-        <h1>Home</h1>   
+        <h1>What's for dinner?</h1>   
     </div>
 </header>
 <div id="shadow">
-    <button onclick="generateRandom()">Suggest something</button>
-    <script>
-        (function () {
-            $('button').on('click', function() {
-                $('button').toggleClass('animate');
-                $('nav').toggleClass('active');
-            })
-        })();
-    </script>
+    <button onclick="generateRandom()" id="suggest">Suggest something</button>
 </div>
 <main>
     <section class="card">
