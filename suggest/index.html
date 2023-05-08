@@ -28,65 +28,80 @@
 </head>
 <body>
 <header>
-    <h1>Home</h1>
+    <div>
+        <nav>
+            <h1>Home</h1>
+        </nav>    
+    </div>
 </header>
-<div class="flex flex-center" id="shadow">
+<div id="shadow">
     <button onclick="generateRandom()">Suggest something</button>
 </div>
-<section class="card">
-	<div id="myDiv"></div>
-	<script>
-		var rows = []; // Keep track of rows to prevent repeats
+<main>
+    <section class="card">
+        <div>
+            <h1>Heading</h1>
+        </div>
+        <div>
+            <ul id="suggestions"></ul>
+            <script>
+                var rows = []; // Keep track of rows to prevent repeats
 
-		function generateRandom() {
-			// Parse the Google Sheet using Papa Parse
-			Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vRf65N0A-e-jUdxhZMurgOiKGwsijBtBYqLnDxgKBtZCrzEapZGAJsgbI-f0A0I_NEZRhN3v4uvq1-t/pub?output=csv', {
-				download: true,
-				header: true,
-				complete: function(results) {
-					// Extract the cells in column 1
-					var allRows = results.data.map(function(row) {
-						return !rows.includes(row);
-					});
-                    
-					// Filter out rows that have already been displayed
-					var unusedRows = results.data.filter(function(row) {
-						return !rows.includes(row);
-					});
+                function generateRandom() {
+                    // Parse the Google Sheet using Papa Parse
+                    Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vRf65N0A-e-jUdxhZMurgOiKGwsijBtBYqLnDxgKBtZCrzEapZGAJsgbI-f0A0I_NEZRhN3v4uvq1-t/pub?output=csv', {
+                        download: true,
+                        header: true,
+                        complete: function(results) {
+                            // Extract the cells in column 1
+                            var allRows = results.data.map(function(row) {
+                                return !rows.includes(row);
+                            });
 
-					if (unusedRows.length === 0) {
-						// Reset rows array if all rows have been displayed
-						rows = results.data.slice();
-					}
+                            // Filter out rows that have already been displayed
+                            var unusedRows = results.data.filter(function(row) {
+                                return !rows.includes(row);
+                            });
 
-					// Display a random unused row in a new div
-					if (unusedRows.length > 0) {
-						var randomIndex = Math.floor(Math.random() * unusedRows.length);
-						var randomRow = unusedRows[randomIndex];
-						rows.push(randomRow); // Add displayed row to rows array
+                            if (unusedRows.length === 0) {
+                                // Reset rows array if all rows have been displayed
+                                rows = results.data.slice();
+                            }
 
-						// Display cells in separate divs
-						var myDiv1 = document.createElement('div');
-						  myDiv1.classList.add('cell');
-						  myDiv1.textContent = randomRow['title'];
-						var myDiv2 = document.createElement('div');
-						  myDiv2.classList.add('cell');
-						  myDiv2.textContent = randomRow['description'];
+                            // Display a random unused row in a new div
+                            if (unusedRows.length > 0) {
+                                var randomIndex = Math.floor(Math.random() * unusedRows.length);
+                                var randomRow = unusedRows[randomIndex];
+                                rows.push(randomRow); // Add displayed row to rows array
 
-						var myDiv = document.getElementById('myDiv');
-						myDiv.appendChild(myDiv1);
-						myDiv.appendChild(myDiv2);
-					} else {
-						document.getElementById('myDiv').textContent = 'All rows have been displayed';
-					}
-				},
-				error: function(error) {
-					document.getElementById('myDiv').textContent = 'Error: ' + error.message;
-				}
-			});
-		}
-	</script>
-</section>
-<footer></footer>
+                                // Display cells in separate divs
+                                var myDiv1 = document.createElement('li');
+                                  myDiv1.classList.add('cell');
+                                  myDiv1.textContent = randomRow['description'];
+                                var myDiv2 = document.createElement('li');
+                                  myDiv2.classList.add('cell');
+                                  myDiv2.textContent = randomRow['title'];
+
+                                var myDiv = document.getElementById('suggestions');
+                                myDiv.appendChild(myDiv1);
+                                myDiv.appendChild(myDiv2);
+                            } else {
+                                document.getElementById('myDiv').textContent = 'All rows have been displayed';
+                            }
+                        },
+                        error: function(error) {
+                            document.getElementById('myDiv').textContent = 'Error: ' + error.message;
+                        }
+                    });
+                }
+            </script>
+        </div>
+    </section>
+</main>
+<footer>
+    <div>
+        <p>Footer</p>
+    </div>
+</footer>
 </body>
 </html>

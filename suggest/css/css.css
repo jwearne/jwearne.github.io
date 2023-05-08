@@ -1,6 +1,11 @@
 body {
+display: flex;
+align-items: stretch;
+flex-wrap: wrap;
+flex-direction: column;
+
 font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-background: #F2F6F3;
+background: rgb(242,246,243);
 }
 
     ::selection {background: rgba(0,0,0,.5);}
@@ -17,14 +22,6 @@ font-size: 1.35rem;
 line-height: 1rem;
 letter-spacing: 0.005rem;
 color: #34C759;
-}
-
-h3 {
-
-}
-
-h4 {
-
 }
 
     p {
@@ -54,24 +51,22 @@ h4 {
 /* nav */
 
 header {
-float: left;
-width: 100vw;
-}
-
-header div {
+padding: .5rem;
 display: flex; 
 align-items: flex-start; 
 justify-content: flex-start;
+}
+
+header div {
+
 width: 100%; 
-padding: .5rem 1rem;
+padding: .5rem .5rem;
 }
 
 logo {float: left; margin: 0;}
 header logo img {margin: 0;}
 
 header logo {width: 230px;}
-
-nav {float: left;}
 
 nav ul li {
 display: inline-block;
@@ -81,34 +76,13 @@ margin: 0 .5rem;
 
 /* global */
 
-main {
-float: left;
-width: 100vw;
-}
-
-    div {float: left;}
-
-section, footer {
-display: flex; 
-align-items: center; 
-justify-content: center;
-width: 100vw;
+section {
 padding: .5rem;
 }
 
-.left {float: left;}
-.right {float: right;}
-
-.width_25 {width: 25%;}
-.width_33 {width: 33.33%;}
-.width_50 {width: 50%;}
-.width_66 {width: 66.66%;}
-.width_75 {width: 75%;}
-.width_100 {width: 100%;}
-
-.grey {background-color: #f7f7f7;}
-.blue {background-color: #14213d;}
-.gold {background-color: #80714a;}
+    section div {
+    padding: .5rem;
+    }
 
 .flex {
 display: flex;
@@ -120,21 +94,60 @@ flex-wrap: wrap;
     .flex-center {align-items: center; justify-content: center;}
     .flex-bottom {justify-content: flex-start; align-items: flex-end;}
 
+
+.card {
+background: #fff;
+border-radius: 1rem;
+box-shadow: 0px 0px 12px rgba(0, 0, 0, 0);
+}
+
+#suggestions {
+display: flex;
+flex-direction: column-reverse;
+gap: .5rem;
+}
+
+ul {padding: 0;}
+
+li {
+list-style: none;
+padding: .75rem .75rem .6rem .75rem;
+transition: all .4s ease-in-out;
+transition-timing-function: ease;
+transform: translateY(10%);
+}
+
+    .cell {
+    border: 1px solid black;
+    border-radius: .5rem;
+    }
+
+/* Unique */
+
+#shadow {
+display: flex;
+justify-content: center;
+align-items: flex-end;
+position: fixed;
+height: 25vh;
+width: 100%;
+bottom: 0;
+background: linear-gradient(0deg, rgba(242,246,243,1) 0%, rgba(242,246,243,1) 60%, rgba(242,246,243,0) 100%);
+z-index: 1;
+}
+
 button {
 height: 50px;
 font-weight: 400;
 letter-spacing: 0.05rem;
-margin: 0 0 .5rem 0;
+margin: 0 0 2rem 0;
 padding: 1rem 2rem;
 background: #34C759;
 color: #fff;
 border: none;
 border-radius: 50px;
 box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-/*
 transition: all .4s ease;
--webkit-transition: all .4s ease;
--moz-transition: all .4s ease; */
 }
 
     button:active {
@@ -142,77 +155,25 @@ transition: all .4s ease;
     -webkit-transform: translateY(-5px)
     }
 
-.card {
-min-height: 80vh;
-background: #fff;
-border-radius: .5rem;
-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-#myDiv {
-display: flex;
-flex-direction: column;
-gap: .5rem;
-}
-
-.cell {
-padding: 0px;
-    
-border: 1px solid black;
-border-radius: .5rem;
-transition: all .4s ease-in-out;
-}
-
-/* UNique */
-
-#shadow {
-position: fixed;
-bottom: 0;
-height: 25vh;
-width: 100vw;
-background: -webkit-linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
-background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
-}
-
-#shadow::before {
-position: relative;
-top: 1;
-height: 25vh;
-width: 100vw;
-background: red;
-}
-
-/* figure */
-
-.figure-container {
-display: flex; 
-align-items: center;
-justify-content: center;
-padding: .25rem;
-}
-
-.flex figure {
-position: relative;
-}
-
-figure {
-padding: .25rem;
-}
-
-figure img {width: 100%;}
-
 /* footer */
 
 footer {
-float: left;
-width: 100vw;
-padding: 1rem;
-color: #fff;
+padding: .5rem;
+display: flex; 
+align-items: flex-start; 
+justify-content: flex-start;
 }
 
-footer logo {width: 70px;}
+footer div {
+width: 100%; 
+padding: .5rem .5rem;
+}
 
-footer div {padding: .5rem;}
+footer p {
+text-align: center;
+font-size: .75rem;
+color: rgba(0,0,0,.2);
+}
 
 @media (max-width: 600px) {
 main {
