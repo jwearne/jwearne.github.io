@@ -38,9 +38,6 @@
 <main>
     <section class="card">
         <div>
-            <h1>Heading</h1>
-        </div>
-        <div>
             <ul id="suggestions"></ul>
             <script>
                 var rows = []; // Keep track of rows to prevent repeats
@@ -51,6 +48,7 @@
                         download: true,
                         header: true,
                         complete: function(results) {
+                            
                             // Extract the cells in column 1
                             var allRows = results.data.map(function(row) {
                                 return !rows.includes(row);
@@ -83,12 +81,10 @@
                                 var myDiv = document.getElementById('suggestions');
                                 myDiv.appendChild(myDiv1);
                                 myDiv.appendChild(myDiv2);
-                            } else {
-                                document.getElementById('myDiv').textContent = 'All rows have been displayed';
+                            } else {                                document.getElementById('suggestions').textContent = 'All rows have been displayed';
                             }
                         },
-                        error: function(error) {
-                            document.getElementById('myDiv').textContent = 'Error: ' + error.message;
+                        error: function(error) {                            document.getElementById('suggestions').textContent = 'Error: ' + error.message;
                         }
                     });
                 }
@@ -96,10 +92,5 @@
         </div>
     </section>
 </main>
-<footer>
-    <div>
-        <p>Footer</p>
-    </div>
-</footer>
 </body>
 </html>

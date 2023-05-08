@@ -6,6 +6,11 @@ flex-direction: column;
 
 font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 background: rgb(242,246,243);
+
+transition: all .4s ease-in-out;
+-webkit-transition: all .4s ease;
+-moz-transition: all .4s ease;
+-ms-transition: all .4s ease;
 }
 
     ::selection {background: rgba(0,0,0,.5);}
@@ -36,10 +41,6 @@ color: #34C759;
     p a {
     border-bottom: 1px solid rgba(0,0,0,.5);
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.5);
-    transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease;
-    -moz-transition: all .4s ease;
-    -ms-transition: all .4s ease;
     }
 
     p a:hover {
@@ -64,19 +65,7 @@ z-index: -1;
 
 header div {
 width: 100%; 
-padding: .5rem .5rem 0 .5rem;
-}
-
-logo {float: left; margin: 0;}
-
-header logo img {margin: 0;}
-
-header logo {width: 230px;}
-
-nav ul li {
-display: inline-block;
-font-weight: 700;
-margin: 0 .5rem 0 .5rem;
+padding: .5rem 1rem 0 1rem;
 }
 
 /* global */
@@ -86,8 +75,7 @@ padding: 4rem 0 0 0;
 }
 
 section {
-padding: .5rem;
-
+padding: 1rem 1rem 20vh 1rem;
 }
 
     section div {
@@ -100,14 +88,9 @@ align-items: stretch;
 flex-wrap: wrap;
 }
 
-    .flex-left {flex-direction: column; justify-content: center;}
-    .flex-center {align-items: center; justify-content: center;}
-    .flex-bottom {justify-content: flex-start; align-items: flex-end;}
-
-
 .card {
 background: #fff;
-border-radius: 1rem;
+border-radius: 1rem 1rem 0 0;
 box-shadow: 0px 0px 12px rgba(0, 0, 0, .05);
 -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, .05);
 }
@@ -118,11 +101,11 @@ flex-direction: column-reverse;
 gap: .5rem;
 }
 
-ul {padding: 0;}
+ul {padding: 0; margin: 0;}
 
 li {
 list-style: none;
-padding: .75rem .75rem .6rem .75rem;
+padding: .75rem;
 transition: all .4s ease-in-out;
 transition-timing-function: ease;
 transform: translateY(10%);
@@ -136,10 +119,10 @@ transform: translateY(10%);
 /* Unique */
 
 #shadow {
+position: fixed;
 display: flex;
 justify-content: center;
 align-items: flex-end;
-position: fixed;
 height: 25vh;
 width: 100%;
 bottom: 0;
@@ -170,6 +153,7 @@ transition: all .4s ease;
 
 footer {
 padding: .5rem;
+background: rgb(255,255,255);
 display: flex; 
 align-items: flex-start; 
 justify-content: flex-start;
@@ -186,8 +170,4 @@ font-size: .75rem;
 color: rgba(0,0,0,.2);
 }
 
-@media (max-width: 600px) {
-main {
-margin: 0;
-}
-}
+@media (max-width: 600px) {}
